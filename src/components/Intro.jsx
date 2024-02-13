@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Intro({startTest}) {
+function Intro({startTest, style}) {
 
     const info = [
         {
@@ -32,7 +32,7 @@ function Intro({startTest}) {
       ];
 
   return (
-    <div className="introduction">
+    <div className="introduction" style={style}>
         <ul className="info">
           {info.map((item, index) => (
             <li key={item.id}>{item.description}</li>
