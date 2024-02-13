@@ -4,9 +4,11 @@ import questions from '../../public/assets/questions'
 function Questions() {
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [timer, setTimer] = useState(5); // bunu degısmeyiii unutmaaa 30 sn olcak.
+    const [timer, setTimer] = useState(6); // bunu degısmeyiii unutmaaa 30 sn olcak.
     const currentQuestion = questions[currentQuestionIndex];
     const [showOptions, setShowOptions] = useState(false);
+    const [correctAnswer, setCorrectAnswer] = useState(0);
+    const [wrongAnswer, setWrongAnswer] = useState(0);
 
     useEffect(() => {
         setShowOptions(false);
@@ -25,14 +27,27 @@ function Questions() {
         return () => clearInterval(countDown);
     }, [timer, currentQuestionIndex]);
 
+    useEffect(() => {
+        console.log("Doğru: " + correctAnswer + ", Yanlış: " + wrongAnswer);
+    }, [correctAnswer, wrongAnswer]);
+
     const nextQuestion = () => {
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
-            setTimer(5); // burada da değişecekkkkkkk
+            setTimer(6); // burada da değişecekkkkkkk
             setShowOptions(false);
         } else {
             alert('finish')
         }
+    };
+
+    const handleAnswer = (selectedOption) => {
+        if(selectedOption === currentQuestion.answer) {
+            setCorrectAnswer(prevCorrect => prevCorrect + 1);
+        } else {
+            setWrongAnswer(prevWrong => prevWrong + 1);
+        }
+        nextQuestion();
     };
 
     return (
@@ -43,7 +58,9 @@ function Questions() {
             {showOptions && (
                 <div className='options'>
                     {currentQuestion.options.map((item, index) => (
-                        <button className='button' key={index}>{item}</button>
+                        <button className='button' key={index} onClick={() => handleAnswer(item)}>
+                            {item}
+                        </button>
                     ))}
                 </div>
             )}
