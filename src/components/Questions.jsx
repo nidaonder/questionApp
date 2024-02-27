@@ -5,7 +5,7 @@ import Results from './Results';
 function Questions() {
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [timer, setTimer] = useState(6); // bunu degısmeyiii unutmaaa 30 sn olcak.
+    const [timer, setTimer] = useState(30);
     const currentQuestion = questions[currentQuestionIndex];
     const [showOptions, setShowOptions] = useState(false);
     const [correctAnswer, setCorrectAnswer] = useState(0);
@@ -16,10 +16,10 @@ function Questions() {
     useEffect(() => {
         setShowOptions(false);
         const countDown = timer > 0 && setInterval(() => {
-            setTimer(prevTimer => prevTimer - 1);  // timer-1 idi değiştirdik.
+            setTimer(prevTimer => prevTimer - 1);
         }, 1000);
 
-        if (timer <= 3) {  // degismeti unutmaaaa
+        if (timer <= 20) {
             setShowOptions(true);
         }
 
@@ -37,7 +37,7 @@ function Questions() {
     const nextQuestion = () => {
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
-            setTimer(6); // burada da değişecekkkkkkk
+            setTimer(30);
             setShowOptions(false);
         } else {
             setQuizCompleted(true);
