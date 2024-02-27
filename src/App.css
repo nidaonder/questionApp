@@ -77,3 +77,19 @@ body {
     background-color: #008CBA;
     color: white;
 }
+
+.results {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    line-height: 2;
+}
+
+.results li {
+    list-style-type: none;
+}
