@@ -5,7 +5,7 @@ import Results from './Results';
 function Questions() {
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [timer, setTimer] = useState(30);
+    const [timer, setTimer] = useState(30); // Her soru ekranda en fazla 30sn kalmalıdır.
     const currentQuestion = questions[currentQuestionIndex];
     const [showOptions, setShowOptions] = useState(false);
     const [correctAnswer, setCorrectAnswer] = useState(0);
@@ -14,7 +14,7 @@ function Questions() {
     const [quizCompleted, setQuizCompleted] = useState(false);
 
     useEffect(() => {
-        setShowOptions(false);
+        setShowOptions(false); // İlk 10sn cevap şıkları görünmeyecektir.
         const countDown = timer > 0 && setInterval(() => {
             setTimer(prevTimer => prevTimer - 1);
         }, 1000);
@@ -24,7 +24,7 @@ function Questions() {
         }
 
         if (timer === 0) {
-            nextQuestion();
+            nextQuestion(); // Cevap şıklarından biri tıklandıktan ya da 30sn tamamlandıktan sonra yeni soruya geçilecektir.
         }
 
         return () => clearInterval(countDown);
@@ -59,15 +59,6 @@ function Questions() {
             }
         ]);
         nextQuestion();
-
-
-
-        // if(selectedOption === currentQuestion.answer) {
-        //     setCorrectAnswer(prevCorrect => prevCorrect + 1);
-        // } else {
-        //     setWrongAnswer(prevWrong => prevWrong + 1);
-        // }
-        // nextQuestion();
     };
 
     const finishQuiz = () => {
@@ -92,28 +83,11 @@ function Questions() {
                 )}
             </div>
           ) : (
+            // Test bitiminde her soruya verilen yanıt ile doğru ve yanlış sayıları kullanıcı ile paylaşılacaktır.
             <Results userAnswer={userAnswer} correctAnswer={correctAnswer} wrongAnswer={wrongAnswer} />
           )}
         </div>
       );
-
-    // return (
-        
-    //     <div className='questions'>
-    //         <p className='timer'>{timer}</p>
-    //         <img src={`/assets/pictures/${currentQuestion.media}`} alt={currentQuestion.media} width='300' />
-    //         <h2>{currentQuestion.id}-{currentQuestion.question}</h2>
-    //         {showOptions && (
-    //             <div className='options'>
-    //                 {currentQuestion.options.map((item, index) => (
-    //                     <button className='button' key={index} onClick={() => handleAnswer(item)}>
-    //                         {item}
-    //                     </button>
-    //                 ))}
-    //             </div>
-    //         )}
-    //     </div>
-    // );
 }
 
 export default Questions
