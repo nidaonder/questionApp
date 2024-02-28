@@ -1,1 +1,1 @@
-netlify : https://65de6862cb3576585317eb11--shimmering-gumption-db560b.netlify.app/
+netlify : https://quizmaster-nida.netlify.app/
