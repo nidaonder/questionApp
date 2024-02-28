@@ -30,10 +30,6 @@ function Questions() {
         return () => clearInterval(countDown);
     }, [timer, currentQuestionIndex]);
 
-    useEffect(() => {
-        console.log("Doğru: " + correctAnswer + ", Yanlış: " + wrongAnswer);
-    }, [correctAnswer, wrongAnswer]);
-
     const nextQuestion = () => {
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
