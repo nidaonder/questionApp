@@ -18,8 +18,7 @@ Live Demo : https://main--question-app-nida.netlify.app/
 
 ## Installation
 1 - Clone the respository:
-https://github.com/nidaonder/questionApp.git
-cd questionApp
+https://github.com/nidaonder/questionApp.git, cd questionApp
 
 2 - Install the necessary dependencies:
 npm install
